@@ -1,0 +1,52 @@
+[
+	{
+		"title": "Vasp",
+		"description": "vaso exterior de plastico",
+		"code": "000001",
+		"price": "125.00",
+		"status": "disponible",
+		"stock": "10",
+		"category": "3",
+		"id": 1
+	},
+	{
+		"title": "Vaso 2",
+		"description": "vaso exterior de metal",
+		"code": "000002",
+		"price": "125.00",
+		"status": "disponible",
+		"stock": "10",
+		"category": "3",
+		"id": 2
+	},
+	{
+		"title": "Silla moderna",
+		"description": "Silla de plástico para exteriores",
+		"code": "000003",
+		"price": "125.00",
+		"status": "disponible",
+		"stock": "10",
+		"category": "3",
+		"id": 3
+	},
+	{
+		"title": "Silla de oficina",
+		"description": "Silla ergonómica para trabajo",
+		"code": "000004",
+		"price": "225.00",
+		"status": "disponible",
+		"stock": "10",
+		"category": "2",
+		"id": 4
+	},
+	{
+		"title": "pantalon de oficina",
+		"description": "para trabajo",
+		"code": "000005",
+		"price": "105.00",
+		"status": "disponible",
+		"stock": "10",
+		"category": "1",
+		"id": 5
+	}
+]
