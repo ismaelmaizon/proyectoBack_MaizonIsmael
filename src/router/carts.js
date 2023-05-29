@@ -27,6 +27,32 @@ router.get('/:cid',  async (req, res) => {
 })
 
 
+router.post('/', async (req, res) => {
+    if ( fs.existsSync(path)) {
+        console.log();
+        const info = await fs.promises.readFile(path, 'utf-8')
+        const carts = JSON.parse(info);
+        if ( carts.length === 0  ) {
+            carts.push({
+                "id" : 1,
+                "products" : []
+            })
+        }else {
+            carts.push({
+                "id" : parseInt(carts[carts.length - 1].id + 1),
+                "products" : []
+            })
+        }
+
+        await fs.promises.writeFile(path, JSON.stringify(carts, null, '\t'));
+        res.send({status: 'crecion de carrito'})
+
+    }else{
+        await fs.promises.writeFile(path, JSON.stringify([], null, '\t'));
+        res.send({status: 'intente de nuevo'})
+    }
+})
+
 
 router.post('/:cid/product/:pid',  async (req, res) => {
     const idCart = req.params.cid;
