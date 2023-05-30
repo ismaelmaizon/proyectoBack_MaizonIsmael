@@ -70,4 +70,75 @@ router.post('/',  async (req, res) => {
 } )
 
 
+router.put('/:pid', async(req, res) => {
+    const product = req.body;
+    const pid = parseInt(req.params.pid);
+    console.log(pid);
+    let variable = false;
+
+    if (fs.existsSync(path)) {
+        const info = await fs.promises.readFile(path, 'utf-8')
+        const products = JSON.parse(info);
+
+        products.map((p) =>{
+            if (p.id === pid) {
+                variable = true;
+
+                p.title = product.title
+                p.description = product.description
+                p.code = product.code
+                p.price = product.price
+                p.status = product.status
+                p.stock = product.stock
+                p.category = product.category
+            }
+        })
+
+        if(variable) {
+            console.log(products);
+            await fs.promises.writeFile(path, JSON.stringify(products, null, '\t'))
+            res.send({status: 'success'});
+        }else {
+            res.send({status: 'no se encontro producto con ese ID'});
+        }
+
+
+    }else {
+        res.send({status: 'no se encontro archivo json, intente de nuevo'}) 
+    }
+})
+
+
+router.delete('/:pid', async(req, res) => {
+    const pid = parseInt(req.params.pid);
+    console.log(pid);
+    let variable = false;
+
+    if (fs.existsSync(path)) {
+        const info = await fs.promises.readFile(path, 'utf-8')
+        const products = JSON.parse(info);
+        
+        products.map((p) =>{
+            if (p.id === pid) {
+                variable = true;
+            }
+        })
+
+        if(variable) {
+            console.log(products);
+            products.splice(pid - 1, 1);
+            console.log('eliminacion ****');
+            console.log(products);
+            await fs.promises.writeFile(path, JSON.stringify(products, null, '\t'))
+            res.send({status: 'success'});
+        }else {
+            res.send({status: 'no se encontro producto con ese ID'});
+        }
+        
+    }else {
+        res.send({status: 'no se encontro archivo json, intente de nuevo'}) 
+    }
+}
+)
+
 export default router;

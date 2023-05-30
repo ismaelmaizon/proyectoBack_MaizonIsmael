@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
         }
 
         await fs.promises.writeFile(path, JSON.stringify(carts, null, '\t'));
-        res.send({status: 'crecion de carrito'})
+        res.send({status: 'creacion de carrito'})
 
     }else{
         await fs.promises.writeFile(path, JSON.stringify([], null, '\t'));
